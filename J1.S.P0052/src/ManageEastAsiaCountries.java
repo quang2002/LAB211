@@ -46,14 +46,20 @@ public class ManageEastAsiaCountries {
     }
 
     public void displayLastCountry() {
-        displayHeader();
-        lastCountry.display();
+        if (lastCountry != null) {
+            displayHeader();
+            lastCountry.display();
+        }
+        else {
+            System.err.println("You not enter any country");
+        }
     }
 
     public void displayAllCountries() {
         displayHeader();
         for (EastAsiaCountries country : countries) {
             country.display();
+            System.out.println();
         }
     }
 
