@@ -2,7 +2,7 @@
  * Copyright 2022 QuangTDHE16060
  * https://github.com/quang2002
  */
-package Utilities;
+package utilities;
 
 /**
  *

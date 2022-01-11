@@ -2,7 +2,7 @@
  * Copyright 2022 QuangTDHE16060
  * https://github.com/quang2002
  */
-package Utilities;
+package utilities;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author yuyu
  */
-public class Validation {
+public class Input {
 
     /**
      * Get an integer from user in range (min, max)

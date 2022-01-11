@@ -4,7 +4,7 @@ package Components;
  *
  * @author yuyu
  */
-public class Fruit {
+public class Fruit implements Cloneable {
 
     private int id;
     private String name;
@@ -63,7 +63,12 @@ public class Fruit {
         this.origin = origin;
     }
 
-    public Fruit createClone() {
-        return new Fruit(id, name, price, quantity, origin);
+    @Override
+    public Fruit clone() {
+        try {
+            return (Fruit) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return null;
+        }
     }
 }

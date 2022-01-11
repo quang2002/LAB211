@@ -2,7 +2,9 @@
  * Copyright 2022 QuangTDHE16060
  * https://github.com/quang2002
  */
-package Utilities;
+package utilities;
+
+import java.util.Arrays;
 
 /**
  *
@@ -32,5 +34,16 @@ public class StringHelper {
         // otherwise calculate number of spaces covered the content
         int spaces = spacing - text.length();
         return String.format("%" + (spaces / 2) + "s%s%" + (spaces - spaces / 2) + "s", "", text, "");
+    }
+
+    public static String toTitle(String str) {
+        if (str.trim().isEmpty()) {
+            return "";
+        }
+        String[] words = str.trim().split("\\s+");
+        return Arrays.stream(words)
+                .map((word) -> " " + Character.toUpperCase(word.charAt(0)) + (word.length() > 1 ? word.toLowerCase().substring(1) : ""))
+                .reduce("", String::concat)
+                .substring(1);
     }
 }

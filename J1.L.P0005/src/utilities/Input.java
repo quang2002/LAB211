@@ -2,7 +2,7 @@
  * Copyright 2022 QuangTDHE16060
  * https://github.com/quang2002
  */
-package Utilities;
+package utilities;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author yuyu
  */
-public class Validation {
+public class Input {
 
     /**
      * Get an integer from user in range (min, max)
@@ -65,7 +65,7 @@ public class Validation {
      * @param checker callback for check value after input
      * @return input integer
      */
-    public static int getInteger(String msg, ValidationChecker<Integer> checker) {
+    public static int getInteger(String msg, InputChecker<Integer> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -134,7 +134,7 @@ public class Validation {
      * @param checker callback for check value after input
      * @return
      */
-    public static float getFloat(String msg, ValidationChecker<Float> checker) {
+    public static float getFloat(String msg, InputChecker<Float> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -157,7 +157,7 @@ public class Validation {
      * @param checker
      * @return
      */
-    public static String getString(String msg, ValidationChecker<String> checker) {
+    public static String getString(String msg, InputChecker<String> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print(msg);
