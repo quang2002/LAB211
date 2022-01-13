@@ -5,7 +5,7 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Objects;
+import utilities.StringHelper;
 
 /**
  *
@@ -13,18 +13,22 @@ import java.util.Objects;
  */
 public class Account implements Serializable {
 
-    private final int id;
+    private Integer id;
     private String name;
-    private String password;
+    private Float balance;
 
-    public Account(int id, String name, String password) {
+    public Account(Integer id, String name, Float balance) {
         this.id = id;
-        this.name = name;
-        this.password = password;
+        this.name = StringHelper.toTitle(name);
+        this.balance = balance;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,27 +36,15 @@ public class Account implements Serializable {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = StringHelper.toTitle(name);
     }
 
-    public String getPassword() {
-        return password;
+    public Float getBalance() {
+        return balance;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setBalance(Float balance) {
+        this.balance = balance;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Account) {
-            return this.id == ((Account) obj).id;
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, password);
-    }
 }

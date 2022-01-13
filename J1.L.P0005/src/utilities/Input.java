@@ -65,7 +65,7 @@ public class Input {
      * @param checker callback for check value after input
      * @return input integer
      */
-    public static int getInteger(String msg, InputChecker<Integer> checker) {
+    public static int getInteger(String msg, ValidationChecker<Integer> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -134,7 +134,7 @@ public class Input {
      * @param checker callback for check value after input
      * @return
      */
-    public static float getFloat(String msg, InputChecker<Float> checker) {
+    public static float getFloat(String msg, ValidationChecker<Float> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             try {
@@ -157,7 +157,7 @@ public class Input {
      * @param checker
      * @return
      */
-    public static String getString(String msg, InputChecker<String> checker) {
+    public static String getString(String msg, ValidationChecker<String> checker) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.print(msg);

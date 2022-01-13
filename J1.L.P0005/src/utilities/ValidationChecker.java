@@ -9,7 +9,7 @@ package utilities;
  * @author yuyu
  * @param <E> type of the value need to check
  */
-public interface InputChecker<E> {
+public interface ValidationChecker<E> {
 
     /**
      * Callback for check validation
