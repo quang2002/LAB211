@@ -13,8 +13,8 @@ import utilities.IOHelper;
  */
 public class AccountManage {
 
-    private HashMap<Integer, String> auth;
-    private HashMap<Integer, Account> info;
+    private HashMap<Integer, String> auth; // id, password
+    private HashMap<Integer, Account> info; // id, account
 
     public AccountManage() {
         auth = new HashMap<>();

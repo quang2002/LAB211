@@ -1,4 +1,5 @@
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -27,8 +28,7 @@ public class Validation {
                     break;
                 }
                 System.err.println("You must enter your choice from 1 to 3");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.err.println("You must enter your choice from 1 to 3");
             }
         }
@@ -38,86 +38,52 @@ public class Validation {
 
     /**
      * get 32-bit binary string
+     *
      * @param msg
-     * @return 
+     * @return
      */
-    public int getBinary(String msg) {
-        int result = 0;
-        System.out.println(msg);
-
+    public BigInteger getBinary(String msg) {
         while (true) {
+            System.out.println(msg);
             String input = sc.nextLine().trim();
             if (input.matches("[01]+")) {
-                if (input.length() > 32) {
-                    System.err.println("You must enter an 32-bit binary string");
-                    continue;
-                }
-
-                for (char c : input.toCharArray()) {
-                    result *= 2;
-                    result += (c - '0');
-                }
-                break;
+                return new BigInteger(input, 2);
             }
             System.err.println("You must enter an binary string");
         }
-
-        return result;
     }
 
     /**
      * get 8-digits hexadecimal number
+     *
      * @param msg
-     * @return 
+     * @return
      */
-    public int getHexadecimal(String msg) {
-        int result = 0;
-        System.out.println(msg);
-
+    public BigInteger getHexadecimal(String msg) {
         while (true) {
+            System.out.println(msg);
             String input = sc.nextLine().trim();
             if (input.matches("[0-9A-Fa-f]+")) {
-                if (input.length() > 32) {
-                    System.err.println("You must enter an 8-digits hexadecimal");
-                    continue;
-                }
-
-                for (char c : input.toCharArray()) {
-                    result *= 16;
-                    if (Character.isDigit(c)) {
-                        result += (c - '0');
-                    }
-                    else {
-                        result += (Character.toUpperCase(c) - 'A' + 10);
-                    }
-                }
-                break;
+                return new BigInteger(input, 16);
             }
             System.err.println("You must enter an hexadecimal");
         }
-
-        return result;
     }
 
     /**
      * get decimal number
+     *
      * @param msg
-     * @return 
+     * @return
      */
-    public int getDecimal(String msg) {
-        int result;
-        System.out.println(msg);
-
+    public BigInteger getDecimal(String msg) {
         while (true) {
+            System.out.println(msg);
             try {
-                result = Integer.parseInt(sc.nextLine());
-                break;
-            }
-            catch (Exception e) {
+                return new BigInteger(sc.nextLine());
+            } catch (Exception e) {
                 System.err.println("You must enter a decimal number");
             }
         }
-
-        return result;
     }
 }

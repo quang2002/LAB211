@@ -139,10 +139,10 @@ public class SecretBank {
                 return false;
             }
 
-            if (loginAccount.getId().equals(value)) {
-                System.out.println("You can't transfer to yourself!");
-                return false;
-            }
+//            if (loginAccount.getId().equals(value)) {
+//                System.out.println("You can't transfer to yourself!");
+//                return false;
+//            }
 
             if (!manage.isAccountExist(value)) {
                 System.out.println("This account is not exist!");

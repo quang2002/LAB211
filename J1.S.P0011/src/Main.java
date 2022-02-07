@@ -1,41 +1,18 @@
 
+import java.math.BigInteger;
+
 /**
  *
  * @author yuyu
  */
 public class Main {
 
-    /**
-     * print out the number in binary representation
-     *
-     * @param num
-     */
-    public static void printBinary(int num) {
-        if (num == 0) {
-            System.out.print(0);
-            return;
-        }
-
-        int[] arr = new int[32];
-        int idx = arr.length - 1;
-
-        while (num > 0) {
-            arr[idx] = num % 2;
-            num /= 2;
-            idx--;
-        }
-
-        for (int i = idx + 1; i < 32; i++) {
-            System.out.print(arr[i]);
-        }
-    }
-
     public static void main(String[] args) {
         Validation vld = new Validation();
 
         int userChoice = vld.getBaseNumber("Your input base number: ");
 
-        int number = 0;
+        BigInteger number = new BigInteger("0");
 
         switch (userChoice) {
             case 1:
@@ -53,13 +30,13 @@ public class Main {
 
         switch (userChoice) {
             case 1:
-                printBinary(number);
+                System.out.print(number.toString(2));
                 break;
             case 2:
-                System.out.print(number);
+                System.out.print(number.toString(10));
                 break;
             case 3:
-                System.out.printf("%X", number);
+                System.out.print(number.toString(16));
                 break;
         }
 
