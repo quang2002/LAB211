@@ -47,7 +47,7 @@ public class UserValidation extends Exception {
     }
 
     public static void checkValidEmail(String email) throws UserValidation {
-        if (!email.matches("^(\\w+\\.)*(\\w+)@(\\w+\\.)+\\w{2,4}$")) {
+        if (!email.matches("^([\\w!#$%&'*+\\-/=?^_`{|}~]+\\.)*([\\w!#$%&'*+\\-/=?^_`{|}~]+)@[a-zA-Z0-9\\-]+(\\.[a-zA-Z0-9\\-]+)*$")) {
             throw new UserValidation("Error: Email must follow standard email format");
         }
     }

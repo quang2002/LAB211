@@ -17,6 +17,9 @@ import utilities.StringHelper;
  */
 public class UserList extends ArrayList<UserModel> {
 
+    private int lastIndexInFile; // load file, lastIndexInFile = 3
+    public boolean appendable;
+
     public UserModel find(String username) {
         for (UserModel user : this) {
             if (user.getUsername().equalsIgnoreCase(username)) {
@@ -30,10 +33,12 @@ public class UserList extends ArrayList<UserModel> {
         return find(username) != null;
     }
 
-    public boolean saveMoreRecord(String filename, UserModel user) {
+    public boolean saveMoreRecord(String filename) {
         try {
             try (FileWriter writer = new FileWriter(filename, true)) {
-                writer.append(user.toString());
+                for (; lastIndexInFile < this.size(); ++lastIndexInFile) {
+                    writer.append(get(lastIndexInFile).toString());
+                }
             }
         } catch (IOException e) {
             System.out.println("Save failed: " + e.getMessage());
@@ -43,6 +48,10 @@ public class UserList extends ArrayList<UserModel> {
     }
 
     public boolean saveToFile(String filename) {
+        if (appendable) {
+            return saveMoreRecord(filename);
+        }
+
         try {
             try (FileWriter writer = new FileWriter(filename)) {
                 for (UserModel user : this) {
@@ -53,12 +62,33 @@ public class UserList extends ArrayList<UserModel> {
             System.out.println("Save failed: " + e.getMessage());
             return false;
         }
+
+        appendable = true;
         return true;
+    }
+
+    @Override
+    public UserModel remove(int i) {
+        if (i < lastIndexInFile) {
+            lastIndexInFile--;
+            appendable = false;
+        }
+        return super.remove(i);
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        if (indexOf(o) < lastIndexInFile) {
+            lastIndexInFile--;
+            appendable = false;
+        }
+        return super.remove(o);
     }
 
     public boolean loadFromFile(String filename) {
         try {
             try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+                this.clear();
                 reader.lines().forEach((String line) -> {
                     String[] tokens = line.split("\\|");
                     if (tokens.length == 6) {
@@ -73,6 +103,8 @@ public class UserList extends ArrayList<UserModel> {
                         }
                     }
                 });
+                lastIndexInFile = this.size();
+                appendable = true;
             }
         } catch (IOException e) {
             System.out.println("Save failed: " + e.getMessage());

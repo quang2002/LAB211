@@ -67,4 +67,32 @@ public final class StringHelper {
             return null;
         }
     }
+
+    public static String VN2EN(String src) {
+        String result = "";
+
+        for (char c : src.toCharArray()) {
+            String cChar = ("" + c).toLowerCase();
+
+            if ("áàảãạăắằẳẵặâấầẩẫậ".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'a' : 'A';
+            } else if ("éèẻẽẹêếềểễệ".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'e' : 'E';
+            } else if ("íìỉĩị".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'i' : 'I';
+            } else if ("óòỏõọôốồổỗộơớờởỡợ".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'o' : 'O';
+            } else if ("úùủũụưứừửữự".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'u' : 'U';
+            } else if ("ýỳỹỷỵ".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'y' : 'Y';
+            } else if ("đ".contains(cChar)) {
+                result += Character.isLowerCase(c) ? 'd' : 'D';
+            } else {
+                result += c;
+            }
+        }
+
+        return result;
+    }
 }

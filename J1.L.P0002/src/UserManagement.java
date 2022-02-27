@@ -92,8 +92,7 @@ public class UserManagement {
             // create account
             System.out.println("Create account successful!");
             users.add(user);
-            
-            
+
         } while (Input.getBoolean("Do you want to continue? (Y/N) "));
     }
 
@@ -211,7 +210,7 @@ public class UserManagement {
 
                 Input.getString("Enter new lastname: ", (lastname) -> {
                     if (!lastname.trim().isEmpty()) {
-                        loginAccount.setFirstName(lastname);
+                        loginAccount.setLastName(lastname);
                     }
                     return true;
                 });
@@ -244,6 +243,8 @@ public class UserManagement {
                     return true;
                 });
 
+                users.appendable = false;
+                
                 System.out.println("Update successful");
 
             } else {
